@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>インブル練習</title>
 
     <link rel="stylesheet" href="style.css">
@@ -11,7 +14,6 @@
 
 <body>
 
-    <!-- プレイ画面 -->
     <div id="gameScreen">
 
         <div class="card">
@@ -49,16 +51,19 @@
 
                 <button onclick="addShot('X',10)">X</button>
                 <button onclick="addShot('10',10)">10</button>
+
                 <button onclick="addShot('9',9)">9</button>
                 <button onclick="addShot('8',8)">8</button>
 
                 <button onclick="addShot('7',7)">7</button>
                 <button onclick="addShot('6',6)">6</button>
+
                 <button onclick="addShot('5',5)">5</button>
                 <button onclick="addShot('4',4)">4</button>
 
                 <button onclick="addShot('3',3)">3</button>
                 <button onclick="addShot('2',2)">2</button>
+
                 <button onclick="addShot('1',1)">1</button>
                 <button onclick="addShot('M',0)">M</button>
 
@@ -82,26 +87,19 @@
 
     </div>
 
-
-
-    <!-- 結果画面 -->
     <div id="resultScreen">
 
         <div class="result-card">
 
             <h1>🎉 CLEAR !</h1>
 
-            <div id="resultShots" class="result-item">
-            </div>
+            <div id="resultShots" class="result-item"></div>
 
-            <div id="resultAverage" class="result-item">
-            </div>
+            <div id="resultAverage" class="result-item"></div>
 
-            <div id="result72" class="result-item">
-            </div>
+            <div id="result72" class="result-item"></div>
 
-            <div id="resultGold" class="result-item">
-            </div>
+            <div id="resultGold" class="result-item"></div>
 
         </div>
 
@@ -109,8 +107,7 @@
 
             <h2>結果詳細</h2>
 
-            <div id="resultCounts">
-            </div>
+            <div id="resultCounts"></div>
 
         </div>
 
@@ -121,9 +118,6 @@
 
     </div>
 
-
-
-    <!-- 設定画面 -->
     <div id="settings">
 
         <div class="settings-header">
