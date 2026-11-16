@@ -38,10 +38,14 @@ let hitCount = {
     M: 0
 };
 
+function playTap() {
+    tapSound.currentTime = 0;
+    tapSound.play().catch(() => {});
+}
+
 function addShot(shot, actualScore) {
 
-    tapSound.currentTime = 0;
-    tapSound.play();
+    playTap();
 
     score += points[shot];
     shotCount++;
@@ -64,12 +68,11 @@ function addShot(shot, actualScore) {
 
 function undoShot() {
 
-    tapSound.currentTime = 0;
-    tapSound.play();
+    playTap();
 
     if (historyData.length === 0) {
         return;
-    
+    }
 
     const lastShot = historyData.pop();
 
@@ -98,7 +101,6 @@ function updateDisplay() {
 
     history.innerHTML = "";
 
-    // 古い履歴を上、新しい履歴を下
     for (let i = 0; i < historyData.length; i++) {
 
         const item =
@@ -130,16 +132,14 @@ function updateDisplay() {
 
 function toggleSettings() {
 
-    tapSound.currentTime = 0;
-    tapSound.play();
-    
+    playTap();
+
     const settings =
         document.getElementById("settings");
 
     if (settings.style.display === "block") {
         settings.style.display = "none";
-    }
-    else {
+    } else {
         settings.style.display = "block";
     }
 }
@@ -224,73 +224,4 @@ function showResultScreen() {
             (
                 hitCount["X"] +
                 hitCount["10"] +
-                hitCount["9"]
-            ) / shotCount
-        ) * 100;
-
-    document.getElementById("resultShots").textContent =
-        "射数 : " + shotCount;
-
-    document.getElementById("resultAverage").textContent =
-        "平均点 : " + average.toFixed(2);
-
-    document.getElementById("result72").textContent =
-        "72射換算 : " + score72;
-
-    document.getElementById("resultGold").textContent =
-        "ゴールド率 : " + goldRate.toFixed(1) + "%";
-
-    let resultText = "";
-
-    const order = [
-        "X",
-        "10",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2",
-        "1",
-        "M"
-    ];
-
-    for (let i = 0; i < order.length; i++) {
-
-        const key = order[i];
-
-        resultText +=
-            key +
-            "数 : " +
-            hitCount[key] +
-            "<br>";
-    }
-
-    document.getElementById("resultCounts").innerHTML =
-        resultText;
-}
-
-function restartGame() {
-
-    score = 0;
-    shotCount = 0;
-    totalPoint = 0;
-
-    historyData = [];
-
-    for (let key in hitCount) {
-        hitCount[key] = 0;
-    }
-
-    document.getElementById("resultScreen").style.display =
-        "none";
-
-    document.getElementById("gameScreen").style.display =
-        "block";
-
-    updateDisplay();
-}
-
-updateDisplay();
+             
