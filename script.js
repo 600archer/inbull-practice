@@ -1,3 +1,12 @@
+const tapSound = new Audio("tap.mp3");
+
+function playTap() {
+    tapSound.currentTime = 0;
+
+    tapSound.play().catch(() => {
+        console.log("sound play failed");
+    });
+}
 let score = 0;
 let shotCount = 0;
 let totalPoint = 0;
@@ -38,6 +47,8 @@ let hitCount = {
 
 function addShot(shot, actualScore) {
 
+    playTap();
+    
     score += points[shot];
     shotCount++;
     totalPoint += actualScore;
@@ -59,6 +70,8 @@ function addShot(shot, actualScore) {
 
 function undoShot() {
 
+    playTap();
+    
     if (historyData.length === 0) {
         return;
     }
@@ -121,6 +134,8 @@ function updateDisplay() {
 
 function toggleSettings() {
 
+    playTap();
+    
     const settings =
         document.getElementById("settings");
 
